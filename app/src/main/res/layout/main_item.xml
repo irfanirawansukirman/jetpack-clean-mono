@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:padding="16dp"
-            android:text="@{movieTitle}"
             android:textColor="@android:color/white"
+            app:textStrikeThrough="@{movieTitle}"
             tools:text="@string/app_name" />
     </FrameLayout>
 

@@ -1,7 +1,9 @@
 package com.irfanirawansukirman.cleanarchmono.ui.main.view
 
+import android.content.Intent
+import androidx.core.net.toUri
+import com.irfanirawansukirman.abstraction.common.ext.*
 import com.irfanirawansukirman.cleanarchmono.R
-import com.irfanirawansukirman.cleanarchmono.common.ext.*
 import com.irfanirawansukirman.cleanarchmono.ui.base.*
 import com.irfanirawansukirman.cleanarchmono.ui.main.presentation.MainVM
 import com.irfanirawansukirman.data.network.model.MoviesResult
@@ -50,7 +52,10 @@ class MainActivity : BaseActivity(), OnRecyclerItemClickListener {
                 }
             }
             is Error -> {
-                showToast(this, uiState.error.message ?: getString(R.string.message_error_not_found))
+                showToast(
+                    this,
+                    uiState.error.message ?: getString(R.string.message_error_not_found)
+                )
                 progress.gone()
                 btnMain.visible()
             }
@@ -70,7 +75,8 @@ class MainActivity : BaseActivity(), OnRecyclerItemClickListener {
      * @param position clicked position
      */
     override fun onItemClick(position: Int) {
-        showToast(this, mainAdapter.getItem(position).title ?: getString(R.string.message_error_not_found))
+        val url = "feature_auth://auth".toUri()
+        startActivity(Intent(Intent.ACTION_VIEW, url))
     }
 
     private fun setupMovieList(data: List<MoviesResult>) {

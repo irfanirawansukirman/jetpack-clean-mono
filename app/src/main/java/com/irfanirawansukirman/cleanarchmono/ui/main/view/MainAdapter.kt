@@ -3,7 +3,6 @@ package com.irfanirawansukirman.cleanarchmono.ui.main.view
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.irfanirawansukirman.cleanarchmono.common.ext.logD
 import com.irfanirawansukirman.cleanarchmono.databinding.MainItemBinding
 import com.irfanirawansukirman.data.network.model.MoviesResult
 import com.irfanirawansukirman.lib_recyclerviewgenericadapter.BaseViewHolder
@@ -22,11 +21,16 @@ class MainAdapter(context: Context, onRecyclerItemClickListener: OnRecyclerItemC
     ) :
         BaseViewHolder<MoviesResult, OnRecyclerItemClickListener>(mainItemBinding, getListener) {
 
+        init {
+            listener?.run {
+                mainItemBinding.root.setOnClickListener { getListener.onItemClick(adapterPosition) }
+            }
+        }
+
         override fun onBind(item: MoviesResult?) {
             mainItemBinding.apply {
                 movieTitle = item?.title
                 posterUrl = item?.posterPath
-                root.setOnClickListener { getListener.onItemClick(adapterPosition) }
                 executePendingBindings()
             }
         }

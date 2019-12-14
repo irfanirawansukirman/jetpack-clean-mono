@@ -3,8 +3,8 @@ package com.irfanirawansukirman.cleanarchmono.ui.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.irfanirawansukirman.cleanarchmono.common.ext.launch
 import com.irfanirawansukirman.data.common.coroutine.CoroutineContextProvider
+import com.irfanirawansukirman.data.common.ext.launch
 import com.irfanirawansukirman.data.common.utils.Connectivity
 import org.koin.core.KoinComponent
 import org.koin.core.inject

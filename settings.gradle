@@ -1,2 +1,9 @@
-include ':app', ':domain', ':data', ':lib_lastadapter', ':lib_recyclerviewgenericadapter', ':lib_loopingviewpager', ':lib_pageindicatorview'
-rootProject.name='Clean Arch Mono'
+include ':app', ':domain', ':data', ':abstraction'
+
+include ':feature:feature_auth'
+
+include ':libraries:lib_recyclerviewgenericadapter'
+include ':libraries:lib_loopingviewpager'
+include ':libraries:lib_pageindicatorview'
+
+rootProject.name = 'Clean Arch Mono'
