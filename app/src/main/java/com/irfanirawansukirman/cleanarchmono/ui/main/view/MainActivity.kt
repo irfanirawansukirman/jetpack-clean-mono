@@ -2,9 +2,9 @@ package com.irfanirawansukirman.cleanarchmono.ui.main.view
 
 import android.content.Intent
 import androidx.core.net.toUri
+import com.irfanirawansukirman.abstraction.base.*
 import com.irfanirawansukirman.abstraction.common.ext.*
 import com.irfanirawansukirman.cleanarchmono.R
-import com.irfanirawansukirman.cleanarchmono.ui.base.*
 import com.irfanirawansukirman.cleanarchmono.ui.main.presentation.MainVM
 import com.irfanirawansukirman.data.network.model.MoviesResult
 import com.irfanirawansukirman.domain.model.response.MovieInfo
@@ -75,7 +75,7 @@ class MainActivity : BaseActivity(), OnRecyclerItemClickListener {
      * @param position clicked position
      */
     override fun onItemClick(position: Int) {
-        val url = "feature_auth://auth".toUri()
+        val url = "feature_auth://auth/$position".toUri()
         startActivity(Intent(Intent.ACTION_VIEW, url))
     }
 

@@ -1,12 +1,23 @@
 package com.irfanirawansukirman.feature_auth
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.irfanirawansukirman.abstraction.base.BaseActivity
+import com.irfanirawansukirman.abstraction.common.ext.showToast
 
-class AuthActivity : AppCompatActivity() {
+class AuthActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+    override fun bindLayoutId() = R.layout.activity_auth
+
+    override fun setupViewListener() {
+
     }
+
+    override fun onLoadObserver() {
+
+    }
+
+    override fun setupComponents() {
+        val data = intent.data?.lastPathSegment ?: ""
+        showToast(this, data)
+    }
+
 }

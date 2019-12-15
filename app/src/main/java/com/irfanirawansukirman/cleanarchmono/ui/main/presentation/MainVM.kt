@@ -1,9 +1,9 @@
 package com.irfanirawansukirman.cleanarchmono.ui.main.presentation
 
-import com.irfanirawansukirman.cleanarchmono.ui.base.BaseVM
-import com.irfanirawansukirman.cleanarchmono.ui.base.Error
-import com.irfanirawansukirman.cleanarchmono.ui.base.NoInternet
-import com.irfanirawansukirman.cleanarchmono.ui.base.Success
+import com.irfanirawansukirman.data.common.base.BaseVM
+import com.irfanirawansukirman.abstraction.base.Error
+import com.irfanirawansukirman.abstraction.base.NoInternet
+import com.irfanirawansukirman.abstraction.base.Success
 import com.irfanirawansukirman.cleanarchmono.ui.main.MainViewEffects
 import com.irfanirawansukirman.domain.interaction.movies.MoviesUseCase
 import com.irfanirawansukirman.domain.model.onFailure
@@ -18,8 +18,12 @@ class MainVM(private val moviesUseCase: MoviesUseCase) : BaseVM<MovieInfo, MainV
 
     private fun getMovieList() = executeUseCase({
         moviesUseCase("")
-            .onSuccess { _uiState.value = Success(it) }
-            .onFailure { _uiState.value = Error(it.throwable) }
+            .onSuccess { _uiState.value =
+                Success(it)
+            }
+            .onFailure { _uiState.value =
+                Error(it.throwable)
+            }
     }, {
         _uiState.value = NoInternet()
     })
